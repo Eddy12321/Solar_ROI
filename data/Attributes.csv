@@ -1,0 +1,14 @@
+,air_temperature,alpha,aod,asymmetry,cld_opd_dcomp,cld_reff_dcomp,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_press_acha,cloud_type,coordinates,dew_point,dhi,dni,fill_flag,ghi,meta,ozone,relative_humidity,solar_zenith_angle,ssa,surface_albedo,surface_pressure,time_index,total_precipitable_water,wind_direction,wind_speed
+data_source,MERRA2,MERRA2,MERRA2,climatology,UW-GOES,UW-GOES,output,output,output,UW-GOES,UW-GOES,,derived,output,output,output,output,,MERRA2,derived,calculated,MERRA2,MODIS-IMS,MERRA2,,MERRA2,MERRA2,MERRA2
+elevation_correction,True,False,True,False,False,False,False,False,False,False,False,,False,False,False,False,False,,False,False,False,False,False,True,,True,False,False
+physical_max,70.0,2.5,1.5,1.0,80.0,80.0,800.0,1350.0,1350.0,1100.0,12.0,,70.0,800.0,1350.0,100.0,1350.0,,0.5,100.0,180.0,1.0,1.0,1100.0,,15.0,360.0,40.0
+physical_min,-100.0,0.0,0.01,-1.0,0.0,0.0,0.0,0.0,0.0,0.0,-15.0,,-100.0,0.0,0.0,0.0,0.0,,0.2,0.0,0.0,0.0,0.0,300.0,,0.0,0.0,0.0
+psm_scale_factor,10.0,100.0,10000.0,100.0,100.0,100.0,1.0,1.0,1.0,1.0,1.0,,10.0,1.0,1.0,1.0,1.0,,1000.0,100.0,100.0,100.0,100.0,1.0,,10.0,1.0,10.0
+psm_units,Celsius,unitless,unitless,unitless,unitless,micron,W/m2,W/m2,W/m2,hPa,"'N/A': -15, 'Clear': 0, 'Probably Clear': 1, 'Fog': 2, 'Water': 3, 'Super-Cooled Water': 4, 'Mixed': 5, 'Opaque Ice': 6, 'Cirrus': 7, 'Overlapping': 8, 'Overshooting': 9, 'Unknown': 10, 'Dust': 11, 'Smoke': 12",,Celsius,W/m2,W/m2,percent of filled timesteps,W/m2,,atm-cm,%,degrees,unitless,unitless,hPa,,cm,degrees,m/s
+scale_factor,10.0,100.0,10000.0,100.0,100.0,100.0,1.0,1.0,1.0,1.0,1.0,,10.0,1.0,1.0,1.0,1.0,,1000.0,100.0,100.0,100.0,100.0,1.0,,10.0,1.0,10.0
+spatial_interp_method,IDW2,IDW2,IDW2,NN,nan,nan,nan,nan,nan,nan,nan,,nan,nan,nan,nan,nan,,IDW2,nan,nan,NN,AGG4,IDW2,,IDW2,NN,IDW4
+temporal_interp_method,linear,nearest,nearest,nearest,nan,nan,nan,nan,nan,nan,nan,,nan,nan,nan,nan,nan,,linear,nan,nan,linear,nearest,linear,,linear,linear,linear
+units,Celsius,unitless,unitless,unitless,unitless,micron,W/m2,W/m2,W/m2,hPa,"'N/A': -15, 'Clear': 0, 'Probably Clear': 1, 'Fog': 2, 'Water': 3, 'Super-Cooled Water': 4, 'Mixed': 5, 'Opaque Ice': 6, 'Cirrus': 7, 'Overlapping': 8, 'Overshooting': 9, 'Unknown': 10, 'Dust': 11, 'Smoke': 12",,Celsius,W/m2,W/m2,percent of filled timesteps,W/m2,,atm-cm,%,degrees,unitless,unitless,hPa,,cm,degrees,m/s
+description,,,,,,,,,,,,"(latitude, longitude)",,,,,,,,,,,,,,,,
+freq,,,,,,,,,,,,,,,,,,,,,,,,,30min,,,
+time_zone,,,,,,,,,,,,,,,,,,,,,,,,,UTC,,,
