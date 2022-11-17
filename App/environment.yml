@@ -1,9 +1,39 @@
 name: streamlit
+channels:
+ - conda-forge
+
 dependencies:
-  - pandas
-  - numpy
-  - matplotlib
-  - seaborn
-  - scikit-learn
-  - scipy
-  - requests
+ - bokeh
+ - cartopy
+ - colorcet
+ - graphviz
+ - h5py
+ - pickle5
+ - python-graphviz
+ - dask
+ - datashader
+ - distributed
+ - fastparquet
+ - holoviews
+ - ipython
+ - jupyter
+ - matplotlib
+ - networkx>=2.0
+ - numba
+ - numpy
+ - pandas >=0.24.1
+ - param
+ - python-snappy
+ - python
+ - rasterio
+ - requests
+ - scikit-image
+ - seaborn
+ - scikit-learn
+ - scipy
+ - shapely
+ - snappy
+ - statsmodels
+ - streamz
+ - xarray
+ - ipympl
