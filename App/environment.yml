@@ -1,13 +1,13 @@
 name: streamlit
 dependencies:
- - pandas
- - numpy as np
- - os
- - pickle
- - matplotlib.pyplot
- - seaborn
- - sklearn
- - scipy
- - h5pyd
- - requests
- - json
+  - pandas
+  - numpy
+  - os
+  - pickle
+  - matplotlib
+  - seaborn
+  - sklearn
+  - scipy
+  - h5pyd
+  - requests
+  - json
