@@ -20,7 +20,7 @@ dependencies:
  - matplotlib
  - networkx>=2.0
  - numba
- - glibc
+ - rmg glibc
  - numpy
  - pandas >=0.24.1
  - param
