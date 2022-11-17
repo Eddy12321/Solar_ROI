@@ -7,7 +7,6 @@ dependencies:
  - pickle5
  - numpy
  - pandas >=0.24.1
- - python
  - requests
  - scikit-image
  - seaborn
