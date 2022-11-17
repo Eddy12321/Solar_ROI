@@ -1,0 +1,13 @@
+name: streamlit
+dependencies:
+ - pandas
+ - numpy as np
+ - os
+ - pickle
+ - matplotlib.pyplot
+ - seaborn
+ - sklearn
+ - scipy
+ - h5pyd
+ - requests
+ - json
