@@ -48,6 +48,9 @@ url = 'https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?wkt=POINT
 
 Locationdf = pd.read_csv(url)
 
+print(Locationdf.head())
+
+''''
 y_train.drop(columns = ['Unnamed: 0'],inplace = True)
 x_train.drop(columns = ['Unnamed: 0'],inplace = True)
 
@@ -69,12 +72,12 @@ Electricity_cost.drop(columns = 'Unnamed: 0', inplace = True)
 Attributes.set_index('Unnamed: 0', inplace = True)
 
 columns = ['air_temperature', 'relative_humidity', 'dew_point', 'wind_speed', 'surface_pressure', 'total_precipitable_water', 'ghi']
-''''
+
 Locationdf1 = getLocationData(lat1, lon1, cols = columns)
 for col in columns:
     scale = float(Attributes.loc['scale_factor', col])
     Locationdf1[col] = Locationdf1[col] / scale
-'''
+
 column_mapper = {'air_temperature': 'TempOut',
                 'surface_pressure': 'Bar',
                 'relative_humidity': 'OutHum',
@@ -106,3 +109,4 @@ dollars_saved1 = Locationdf['Money_saved'].sum() / 100
 print('The amount that you would save per year at your location is $' + str(dollars_saved1))
 TimeTillPayed = InstallationCost / dollars_saved1
 print('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
+'''
