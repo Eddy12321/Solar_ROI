@@ -13,19 +13,6 @@ import requests
 import json
 from requests.structures import CaseInsensitiveDict
 
-def getLocationData(lat, lon, cols = ['meta']):
-    
-    tree = cKDTree(nsrdb['coordinates'])
-    dist, pos = tree.query(np.array([lat, lon]))
-    
-    df = pd.DataFrame(columns = cols)
-    
-    for col in cols:
-        df[col] = nsrdb[col][:, pos]
-    
-    return df
-
-
 GEOAPI_KEY = st.secrets['GEOAPI_KEY']
 NSRDBAPI_KEY = "gIgh6128lU37WJnlZyJuSOHICrGTn1C59Z8tBnD8"
 Address = "1600%20Pennsylvania%20Avenue%20NW%2C%20Washington%2C%20DC%2020500"
