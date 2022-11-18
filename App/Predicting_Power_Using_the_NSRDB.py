@@ -75,8 +75,6 @@ Electricity_cost.drop(columns = 'Unnamed: 0', inplace = True)
 
 Attributes.set_index('Unnamed: 0', inplace = True)
 
-st.write(Attributes.head())
-
 column_mapper1 = {'air_temperature': 'Temperature',
                 'surface_pressure': 'Pressure',
                 'relative_humidity': 'Relative Humidity',
@@ -87,16 +85,12 @@ column_mapper1 = {'air_temperature': 'Temperature',
 
 Attributes.rename(columns = column_mapper1, inplace = True)
 
-st.write(Attributes.head())
-
 columns = ['Temperature', 'Pressure', 'Relative Humidity', 'Wind Speed','Dew Point', 'GHI', 'Precipitable Water']
 
 for col in columns:
     scale = float(Attributes.loc['scale_factor', col])
     Locationdf[col] = Locationdf[col].astype(float) / scale
 
-
-''''
 column_mapper2 = {'Temperature': 'TempOut',
                 'Pressure': 'Bar',
                 'Relative Humidity': 'OutHum',
@@ -108,6 +102,7 @@ Locationdf.rename(columns = column_mapper2, inplace=True)
 
 print(Locationdf.head())
 
+''''
 Locationdf.loc[:,'Rain']  = Locationdf.loc[:,'Rain'] / 0.25
 Locationdf['SolarEnergy'] = Locationdf['SolarRad'] * 0.5 / 11.622
 Locationdf['Temp_Pressure_ratio'] = Locationdf['TempOut'] / Locationdf['Bar']
