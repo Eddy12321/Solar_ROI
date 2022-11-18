@@ -31,7 +31,6 @@ mailing_list = 'false'
 x_train = pd.read_csv('./data/X_train2.csv')
 y_train = pd.read_csv('./data/Y_train2.csv')
 Electricity_cost = pd.read_csv('./data/StatesElectricity.csv')
-Attributes = pd.read_csv('./data/Attributes.csv')
 url1 = "https://api.geoapify.com/v1/geocode/search?text=" + Address + "%20United%20States&apiKey=" + GEOAPI_KEY
 
 # Powered by Geoapify https://www.geoapify.com
@@ -73,26 +72,6 @@ else:
 Electricity_cost.set_index('State', inplace = True)
 Electricity_cost.drop(columns = 'Unnamed: 0', inplace = True)
 
-Attributes.set_index('Unnamed: 0', inplace = True)
-
-column_mapper1 = {'air_temperature': 'Temperature',
-                'surface_pressure': 'Pressure',
-                'relative_humidity': 'Relative Humidity',
-                'wind_speed': 'Wind Speed',
-                'dew_point': 'Dew Point',
-                'ghi': 'GHI',
-                'total_precipitable_water': 'Precipitable Water'}
-
-Attributes.rename(columns = column_mapper1, inplace = True)
-
-columns = ['Temperature', 'Pressure', 'Relative Humidity', 'Wind Speed','Dew Point', 'GHI', 'Precipitable Water']
-
-st.write(Locationdf['Temperature'].astype(float).max())
-
-for col in columns:
-    scale = float(Attributes.loc['scale_factor', col])
-    Locationdf[col] = Locationdf[col].astype(float) / scale
-
 column_mapper2 = {'Temperature': 'TempOut',
                 'Pressure': 'Bar',
                 'Relative Humidity': 'OutHum',
@@ -102,10 +81,8 @@ column_mapper2 = {'Temperature': 'TempOut',
                 'Precipitable Water': 'Rain'}
 Locationdf.rename(columns = column_mapper2, inplace=True)
 
-st.write(Locationdf.head())
-st.write(Locationdf['Rain'].max())
 
-''''
+
 Locationdf.loc[:,'Rain']  = Locationdf.loc[:,'Rain'] / 0.25
 Locationdf['SolarEnergy'] = Locationdf['SolarRad'] * 0.5 / 11.622
 Locationdf['Temp_Pressure_ratio'] = Locationdf['TempOut'] / Locationdf['Bar']
@@ -113,6 +90,8 @@ Locationdf['Temp_Pressure_ratio'] = Locationdf['TempOut'] / Locationdf['Bar']
 Locationdf.replace(to_replace = {np.Inf: np.NAN}, inplace = True)
 Locationdf.dropna(inplace = True)
 
+st.write(Locationdf.head())
+''''
 model.fit(x_train, y_train)
 
 Locationdf['Power'] = model.predict(Locationdf)
