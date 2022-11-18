@@ -93,8 +93,7 @@ columns = ['Temperature', 'Pressure', 'Relative Humidity', 'Wind Speed','Dew Poi
 
 for col in columns:
     scale = float(Attributes.loc['scale_factor', col])
-    st.write(Locationdf[col].dtype)
-    Locationdf[col] = Locationdf[col] / scale
+    Locationdf[col] = Locationdf.loc[:,col] / scale
 
 
 ''''
