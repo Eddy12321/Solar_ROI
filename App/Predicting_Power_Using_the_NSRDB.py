@@ -75,6 +75,8 @@ Electricity_cost.drop(columns = 'Unnamed: 0', inplace = True)
 
 Attributes.set_index('Unnamed: 0', inplace = True)
 
+st.write(Attributes.head())
+
 column_mapper1 = {'air_temperature': 'Temperature',
                 'surface_pressure': 'Pressure',
                 'relative_humidity': 'Relative Humidity',
@@ -93,6 +95,8 @@ for col in columns:
     scale = float(Attributes.loc['scale_factor', col])
     Locationdf[col] = Locationdf[col] / scale
 
+
+''''
 column_mapper2 = {'Temperature': 'TempOut',
                 'Pressure': 'Bar',
                 'Relative Humidity': 'OutHum',
@@ -124,3 +128,4 @@ dollars_saved1 = Locationdf['Money_saved'].sum() / 100
 print('The amount that you would save per year at your location is $' + str(dollars_saved1))
 TimeTillPayed = InstallationCost / dollars_saved1
 print('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
+'''
