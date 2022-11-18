@@ -81,9 +81,10 @@ column_mapper2 = {'Temperature': 'TempOut',
                 'Precipitable Water': 'Rain'}
 Locationdf.rename(columns = column_mapper2, inplace=True)
 
+for col in Locationdf.columns:
+    Locationdf[col] = Locationdf[col].astype(float)
 
-
-Locationdf.loc[:,'Rain']  = Locationdf.loc[:,'Rain'] / 0.25
+Locationdf['Rain']  = Locationdf['Rain'] / 0.25
 Locationdf['SolarEnergy'] = Locationdf['SolarRad'] * 0.5 / 11.622
 Locationdf['Temp_Pressure_ratio'] = Locationdf['TempOut'] / Locationdf['Bar']
 
