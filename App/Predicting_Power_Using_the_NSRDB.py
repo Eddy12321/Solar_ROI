@@ -100,7 +100,7 @@ column_mapper2 = {'Temperature': 'TempOut',
                 'Precipitable Water': 'Rain'}
 Locationdf.rename(columns = column_mapper2, inplace=True)
 
-print(Locationdf.head())
+st.write(Locationdf.head())
 
 ''''
 Locationdf.loc[:,'Rain']  = Locationdf.loc[:,'Rain'] / 0.25
