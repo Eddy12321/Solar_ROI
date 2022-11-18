@@ -41,8 +41,8 @@ your_affiliation = 'Springboard'
 your_email = 'edwardjs43@gmail.com'
 mailing_list = 'false'
 
-x_train = pd.read_csv(st.file_uploader('./data/X_train2.csv'))
-y_train = pd.read_csv(st.file_uploader('./data/Y_train2.csv'))
+x_train = pd.DataFrame(st.file_uploader('./data/X_train2.csv'))
+y_train = pd.DataFrame(st.file_uploader('./data/Y_train2.csv'))
 Electricity_cost = pd.read_csv('../data/StatesElectricity.csv')
 Attributes = pd.read_csv('../data/Attributes.csv')
 url1 = "https://api.geoapify.com/v1/geocode/search?text=" + Address + "%20United%20States&apiKey=" + GEOAPI_KEY
