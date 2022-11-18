@@ -50,7 +50,7 @@ Locationdf = pd.read_csv(url)
 
 Locationdf = Locationdf.iloc[:,:11]
 Locationdf.columns = Locationdf.loc[1]
-Locationdf.drop([[0,1]], inplace = True)
+Locationdf.drop([0,1], inplace = True)
 Locationdf.drop(columns = ['Year', 'Month', 'Day', 'Hour', 'Minute'], inplace = True)
 
 st.write(Locationdf.head())
