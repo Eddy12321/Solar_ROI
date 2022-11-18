@@ -50,6 +50,12 @@ Locationdf = pd.read_csv(url)
 
 st.write(Locationdf.head())
 
+Locationdf.columns = Locationdf.loc[1]
+Locationdf.drop(0, inplace = True)
+Locationdf.drop(columns = ['Year', 'Month', 'Day', 'Hour', 'Minute'], inplace = True)
+
+st.write(Locationdf.head())
+
 ''''
 y_train.drop(columns = ['Unnamed: 0'],inplace = True)
 x_train.drop(columns = ['Unnamed: 0'],inplace = True)
@@ -71,7 +77,7 @@ Electricity_cost.drop(columns = 'Unnamed: 0', inplace = True)
 
 Attributes.set_index('Unnamed: 0', inplace = True)
 
-columns = ['air_temperature', 'relative_humidity', 'dew_point', 'wind_speed', 'surface_pressure', 'total_precipitable_water', 'ghi']
+columns = ['Temperature', 'Relative Humidity', 'Dew Point', 'Wind Speed', 'Pressure', 'Precipitable Water', 'GHI']
 
 Locationdf1 = getLocationData(lat1, lon1, cols = columns)
 for col in columns:
