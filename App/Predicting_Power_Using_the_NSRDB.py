@@ -113,6 +113,6 @@ Locationdf['Money_saved'] = Locationdf['Power'] * (StateElectricityCost1 / 2)
 
 dollars_saved1 = Locationdf['Money_saved'].sum() / 100
 
-print('The amount that you would save per year at your location is $' + str(dollars_saved1))
+st.write('The amount that you would save per year at your location is $' + str(dollars_saved1))
 TimeTillPayed = InstallationCost / dollars_saved1
-print('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
+st.write('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
