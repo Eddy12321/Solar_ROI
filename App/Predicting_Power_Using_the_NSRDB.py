@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import os
 import pickle
+import matplotlib as plt
 import seaborn as sns
 from sklearn import __version__ as sklearn_version
 from scipy.spatial import cKDTree
