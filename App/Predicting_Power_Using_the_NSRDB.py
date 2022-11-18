@@ -59,7 +59,7 @@ y_train.drop(columns = ['Unnamed: 0'],inplace = True)
 x_train.drop(columns = ['Unnamed: 0'],inplace = True)
 
 expected_model_version = '1.0'
-model_path = '../models/power_predictor.pkl'
+model_path = './models/power_predictor.pkl'
 if os.path.exists(model_path):
     with open(model_path, 'rb') as f:
         model = pickle.load(f)
