@@ -48,7 +48,7 @@ url = 'https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?wkt=POINT
 
 Locationdf = pd.read_csv(url)
 
-print(Locationdf.head())
+st.write(Locationdf.head())
 
 ''''
 y_train.drop(columns = ['Unnamed: 0'],inplace = True)
