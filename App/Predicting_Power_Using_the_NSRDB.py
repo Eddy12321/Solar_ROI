@@ -55,7 +55,6 @@ Locationdf.drop(columns = ['Year', 'Month', 'Day', 'Hour', 'Minute'], inplace = 
 
 st.write(Locationdf.head())
 
-''''
 y_train.drop(columns = ['Unnamed: 0'],inplace = True)
 x_train.drop(columns = ['Unnamed: 0'],inplace = True)
 
@@ -76,21 +75,32 @@ Electricity_cost.drop(columns = 'Unnamed: 0', inplace = True)
 
 Attributes.set_index('Unnamed: 0', inplace = True)
 
-columns = ['Temperature', 'Relative Humidity', 'Dew Point', 'Wind Speed', 'Pressure', 'Precipitable Water', 'GHI']
+column_mapper1 = {'air_temperature': 'Temperature',
+                'surface_pressure': 'Pressure',
+                'relative_humidity': 'Relative Humidity',
+                'wind_speed': 'Wind Speed',
+                'dew_point': 'Dew Point',
+                'ghi': 'GHI',
+                'total_precipitable_water': 'Precipitable Water'}
 
-Locationdf1 = getLocationData(lat1, lon1, cols = columns)
+Attributes.rename(columns = column_mapper1, inplace = True)
+
+st.write(Attributes.head())
+
+columns = ['Temperature', 'Pressure', 'Relative Humidity', 'Wind Speed','Dew Point', 'GHI', 'Precipitable Water']
+
 for col in columns:
     scale = float(Attributes.loc['scale_factor', col])
-    Locationdf1[col] = Locationdf1[col] / scale
+    Locationdf[col] = Locationdf[col] / scale
 
-column_mapper = {'Temperature': 'TempOut',
+column_mapper2 = {'Temperature': 'TempOut',
                 'Pressure': 'Bar',
                 'Relative Humidity': 'OutHum',
                 'Wind Speed': 'WindSpeed',
                 'Dew Point': 'DewPt',
                 'GHI': 'SolarRad',
                 'Precipitable Water': 'Rain'}
-Locationdf.rename(columns = column_mapper, inplace=True)
+Locationdf.rename(columns = column_mapper2, inplace=True)
 
 print(Locationdf.head())
 
@@ -114,4 +124,3 @@ dollars_saved1 = Locationdf['Money_saved'].sum() / 100
 print('The amount that you would save per year at your location is $' + str(dollars_saved1))
 TimeTillPayed = InstallationCost / dollars_saved1
 print('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
-'''
