@@ -101,7 +101,7 @@ column_mapper2 = {'Temperature': 'TempOut',
 Locationdf.rename(columns = column_mapper2, inplace=True)
 
 st.write(Locationdf.head())
-st.write(Locationdf['Rain'].mean())
+st.write(Locationdf['Rain'].max())
 
 ''''
 Locationdf.loc[:,'Rain']  = Locationdf.loc[:,'Rain'] / 0.25
