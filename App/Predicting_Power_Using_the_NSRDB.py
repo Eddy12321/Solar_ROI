@@ -48,7 +48,7 @@ url = 'https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?wkt=POINT
 
 Locationdf = pd.read_csv(url)
 
-Locationdf = Locationdf.iloc[:,:11]
+Locationdf = Locationdf.iloc[:,:12]
 Locationdf.columns = Locationdf.loc[1]
 Locationdf.drop([0,1], inplace = True)
 Locationdf.drop(columns = ['Year', 'Month', 'Day', 'Hour', 'Minute'], inplace = True)
