@@ -8,6 +8,7 @@ import os
 import pickle
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.pipeline import make_pipeline
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import GradientBoostingRegressor
@@ -61,8 +62,8 @@ st.write(Locationdf.head())
 y_train.drop(columns = ['Unnamed: 0'],inplace = True)
 x_train.drop(columns = ['Unnamed: 0'],inplace = True)
 
+''''
 expected_model_version = '1.0'
-
 model_path = './Models/power_predictor.pkl'
 
 if os.path.exists(model_path):
@@ -74,6 +75,9 @@ if os.path.exists(model_path):
         print("Warning: model created under different sklearn version")
 else:
     print("Expected model not found")
+'''
+
+model = make_pipeline(MinMaxScaler(), PCA(n_components = 9), GradientBoostingRegressor(learning_rate = 0.1, n_estimators = 77, max_depth = 6))
 
 Electricity_cost.set_index('State', inplace = True)
 Electricity_cost.drop(columns = 'Unnamed: 0', inplace = True)
