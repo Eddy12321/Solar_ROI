@@ -50,7 +50,7 @@ Locationdf = pd.read_csv(url)
 
 Locationdf = Locationdf.iloc[:,:11]
 Locationdf.columns = Locationdf.loc[1]
-Locationdf.drop(0, inplace = True)
+Locationdf.drop([[0,1]], inplace = True)
 Locationdf.drop(columns = ['Year', 'Month', 'Day', 'Hour', 'Minute'], inplace = True)
 
 st.write(Locationdf.head())
@@ -83,13 +83,13 @@ for col in columns:
     scale = float(Attributes.loc['scale_factor', col])
     Locationdf1[col] = Locationdf1[col] / scale
 
-column_mapper = {'air_temperature': 'TempOut',
-                'surface_pressure': 'Bar',
-                'relative_humidity': 'OutHum',
-                'wind_speed': 'WindSpeed',
-                'dew_point': 'DewPt',
-                'ghi': 'SolarRad',
-                'total_precipitable_water': 'Rain'}
+column_mapper = {'Temperature': 'TempOut',
+                'Pressure': 'Bar',
+                'Relative Humidity': 'OutHum',
+                'Wind Speed': 'WindSpeed',
+                'Dew Point': 'DewPt',
+                'GHI': 'SolarRad',
+                'Precipitable Water': 'Rain'}
 Locationdf.rename(columns = column_mapper, inplace=True)
 
 print(Locationdf.head())
