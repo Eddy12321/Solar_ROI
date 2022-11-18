@@ -72,7 +72,8 @@ if os.path.exists(model_path):
 else:
     print("Expected model not found")
 '''
-model = pickle.load(model_path, 'rb')
+with open(model_path, 'rb') as f:
+        model = pickle.load(f)
 Electricity_cost.set_index('State', inplace = True)
 Electricity_cost.drop(columns = 'Unnamed: 0', inplace = True)
 
