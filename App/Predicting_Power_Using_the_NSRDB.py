@@ -8,6 +8,9 @@ import os
 import pickle
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn import __version__ as sklearn_version
 from scipy.spatial import cKDTree
 import requests
