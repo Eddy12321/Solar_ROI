@@ -27,7 +27,7 @@ def getLocationData(lat, lon, cols = ['meta']):
 
 
 GEOAPI_KEY = st.secrets['GEOAPI_KEY']
-NSRDBAPI_KEY = st.secret['NSRDBAPI_KEY']
+NSRDBAPI_KEY = st.secrets['NSRDBAPI_KEY']
 Address = "1600%20Pennsylvania%20Avenue%20NW%2C%20Washington%2C%20DC%2020500%"
 InstallationCost = 2400
 year = 2020
