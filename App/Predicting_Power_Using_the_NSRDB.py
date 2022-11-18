@@ -87,6 +87,8 @@ Attributes.rename(columns = column_mapper1, inplace = True)
 
 columns = ['Temperature', 'Pressure', 'Relative Humidity', 'Wind Speed','Dew Point', 'GHI', 'Precipitable Water']
 
+st.write(Locationdf['Temperature'].max())
+
 for col in columns:
     scale = float(Attributes.loc['scale_factor', col])
     Locationdf[col] = Locationdf[col].astype(float) / scale
