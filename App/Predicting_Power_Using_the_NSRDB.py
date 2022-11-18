@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import os
 import pickle
+import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn import __version__ as sklearn_version
 from scipy.spatial import cKDTree
@@ -92,7 +93,7 @@ Locationdf.replace(to_replace = {np.Inf: np.NAN}, inplace = True)
 Locationdf.dropna(inplace = True)
 
 st.write(Locationdf.head())
-''''
+
 model.fit(x_train, y_train)
 
 Locationdf['Power'] = model.predict(Locationdf)
@@ -106,4 +107,3 @@ dollars_saved1 = Locationdf['Money_saved'].sum() / 100
 print('The amount that you would save per year at your location is $' + str(dollars_saved1))
 TimeTillPayed = InstallationCost / dollars_saved1
 print('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
-'''
