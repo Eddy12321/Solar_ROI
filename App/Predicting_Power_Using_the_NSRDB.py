@@ -105,7 +105,7 @@ def main():
     st.write('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
 
 st.markdown('Please enter your address as it appears on google, except with a space on both sides of the commas. No need to enter the country.')
-Address = st.text_input('Form', value = "1600 Pennsylvania Avenue , Washington DC , 20500", on_change = runMain(), label_visibility = 'hidden')
+Address = st.text_input('Form', value = "1600 Pennsylvania Avenue , Washington DC , 20500", label_visibility = 'hidden')
 
 tempAddress = Address.rsplit(" ")
 Address = ""
