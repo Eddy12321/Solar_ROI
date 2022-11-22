@@ -105,7 +105,7 @@ def main():
     st.write('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
 
     Locationdf['Date'] = pd.date_range(start = "01/01/22 00:00:00", periods = Locationdf.shape[0], freq = '30T')
-    Locationdf['Month'] = Locationdf.loc['Date'].agg(func = lambda x: x.month)
+    Locationdf['Month'] = Locationdf['Date'].agg(func = lambda x: x.month)
 
     st.bar_chart(data = Locationdf, x = 'Power')
 
