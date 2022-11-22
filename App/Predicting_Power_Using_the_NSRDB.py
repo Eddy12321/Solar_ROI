@@ -116,7 +116,6 @@ for idx, word in enumerate(tempAddress):
             Address +=  '%2C'
         else:
             Address += '%20' + word
-st.write(Address)
 
 InstallationCost = st.number_input('Please enter the expected cost of your solar panel installation in dollars.', value = 2400, min_value = 1)
 
