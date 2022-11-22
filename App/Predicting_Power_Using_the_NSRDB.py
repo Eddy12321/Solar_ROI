@@ -20,6 +20,7 @@ from requests.structures import CaseInsensitiveDict
 
 GEOAPI_KEY = st.secrets['GEOAPI_KEY']
 NSRDBAPI_KEY = "gIgh6128lU37WJnlZyJuSOHICrGTn1C59Z8tBnD8"
+newAddress = ""
 
 st.title("Predicting Solar Power Using the NSRDB")
 st.markdown("This program will allow you to determine a timeline for paying off your solar installation. We begin by predicting the amount of solar power that can be generated at \
@@ -104,25 +105,24 @@ def main():
     st.write('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
 
 def checkAddress():
-    if (len(Address) > 0):
-        Address = ""
+    if (Address):
         tempAddress = Address.rsplit(" ")
         for idx, word in enumerate(tempAddress):
             if idx == 0:
-                Address += word
+                newAddress += word
             else:
                 if word == ',':
-                    Address +=  '%2C'
+                    newAddress +=  '%2C'
                 else:
-                    Address += '%20' + word
-        st.write(Address)
+                    newAddress += '%20' + word
+        st.write(newAddress)
     else:
         st.markdown('Please enter a valid address.')
     
     runMain()
 
 def runMain():
-    if (Address and InstallationCost and InstallationSize):
+    if (newAddress and InstallationCost and InstallationSize):
         main()
     else:
         return
