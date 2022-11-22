@@ -104,8 +104,7 @@ def main():
     TimeTillPayed = InstallationCost / dollars_saved1
     st.write('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
 
-st.markdown('Please enter your address as it appears on google, except with a space on both sides of the commas. No need to enter the country.')
-Address = st.text_input('Form', value = "1600 Pennsylvania Avenue , Washington DC , 20500", label_visibility = 'hidden')
+Address = st.text_input('Please enter your address as it appears on google, except with a space on both sides of the commas. No need to enter the country.', value = "1600 Pennsylvania Avenue , Washington DC , 20500", label_visibility = 'hidden')
 
 tempAddress = Address.rsplit(" ")
 Address = ""
@@ -119,10 +118,8 @@ for idx, word in enumerate(tempAddress):
             Address += '%20' + word
 st.write(Address)
 
-st.markdown('Please enter the expected cost of your solar panel installation in dollars.')
-InstallationCost = st.number_input('Form', value = 2400, min_value = 1, label_visibility = 'hidden')
+InstallationCost = st.number_input('Please enter the expected cost of your solar panel installation in dollars.', value = 2400, min_value = 1, label_visibility = 'hidden')
 
-st.markdown('Please enter the size of your installation in kW .')
-InstallationSize = st.number_input('Form', value = 0.6, min_value = 0.05, label_visibility = 'hidden')
+InstallationSize = st.number_input('Please enter the size of your installation in kW.', value = 0.6, min_value = 0.05, label_visibility = 'hidden')
 
 main()
