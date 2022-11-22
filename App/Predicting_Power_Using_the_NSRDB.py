@@ -107,6 +107,7 @@ def main():
     Date = pd.date_range(start = "01/01/22 00:00:00", periods = Locationdf.shape[0], freq = '30T')
 
     st.write(Date)
+    st.write(Locationdf.shape[0])
 
 Address = st.text_input('Please enter your address as it appears on google, except with a space on both sides of the commas. No need to enter the country.', value = "1600 Pennsylvania Avenue , Washington DC , 20500")
 
