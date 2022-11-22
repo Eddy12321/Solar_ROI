@@ -109,6 +109,9 @@ def main():
 
     fig, ax = plt.subplots(figsize = (10, 10))
     ax.hist(Locationdf['Power'])
+    ax.set_title('Histogram of Power Generated')
+    ax.set_xlabel('Power Generated')
+    ax.set_ylabel('Count')
 
     st.pyplot(fig = fig)
 
