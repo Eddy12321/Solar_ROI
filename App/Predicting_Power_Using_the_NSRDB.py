@@ -20,7 +20,7 @@ from requests.structures import CaseInsensitiveDict
 
 GEOAPI_KEY = st.secrets['GEOAPI_KEY']
 NSRDBAPI_KEY = "gIgh6128lU37WJnlZyJuSOHICrGTn1C59Z8tBnD8"
-newAddress = ""
+newAddress = "f"
 
 st.title("Predicting Solar Power Using the NSRDB")
 st.markdown("This program will allow you to determine a timeline for paying off your solar installation. We begin by predicting the amount of solar power that can be generated at \
@@ -104,31 +104,26 @@ def main():
     TimeTillPayed = InstallationCost / dollars_saved1
     st.write('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
 
-def checkAddress():
-    if (Address):
-        tempAddress = Address.rsplit(" ")
-        for idx, word in enumerate(tempAddress):
-            if idx == 0:
-                newAddress += word
-            else:
-                if word == ',':
-                    newAddress +=  '%2C'
-                else:
-                    newAddress += '%20' + word
-        st.write(newAddress)
-    else:
-        st.markdown('Please enter a valid address.')
-    
-    runMain()
-
 def runMain():
-    if (newAddress and InstallationCost and InstallationSize):
+    if (Address and InstallationCost and InstallationSize):
         main()
     else:
         return
 
 st.markdown('Please enter your address as it appears on google, except with a space on both sides of the commas. No need to enter the country.')
-Address = st.text_input('Form', value = "1600 Pennsylvania Avenue , Washington DC , 20500", on_change = checkAddress(), label_visibility = 'hidden')
+Address = st.text_input('Form', value = "1600 Pennsylvania Avenue , Washington DC , 20500", on_change = runMain(), label_visibility = 'hidden')
+
+tempAddress = Address.rsplit(" ")
+Address = ""
+for idx, word in enumerate(tempAddress):
+    if idx == 0:
+        Address += word
+    else:
+        if word == ',':
+            Address +=  '%2C'
+        else:
+            Address += '%20' + word
+st.write(Address)
 
 st.markdown('Please enter the expected cost of your solar panel installation in dollars.')
 InstallationCost = st.number_input('Form', value = 0.0, min_value = 1, label_visibility = 'hidden', on_change = runMain())
