@@ -107,7 +107,8 @@ def main():
     Locationdf['Date'] = pd.date_range(start = "01/01/22 00:00:00", periods = Locationdf.shape[0], freq = '30T')
     Locationdf['Month'] = Locationdf['Date'].agg(func = lambda x: x.month)
 
-    fig = Locationdf['Power'].hist()
+    fig, ax = plt.subplots(figsize = (10, 10))
+    ax.hist(Locationdf['Power'])
 
     st.pyplot(fig = fig)
 
