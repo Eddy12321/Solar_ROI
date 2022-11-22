@@ -104,7 +104,7 @@ def main():
     st.write('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
 
 def checkAddress():
-    if (Address):
+    if (len(Address) > 0):
         Address = ""
         tempAddress = Address.rsplit(" ")
         for idx, word in enumerate(tempAddress):
