@@ -49,7 +49,7 @@ def main():
     resp1 = requests.get(url1, headers = headers)
     features1 = resp1.json()['features']
     st.write(features1)
-    properties1 = features1[1]['properties']
+    properties1 = features1[0]['properties']
     lat = properties1['lat']
     lon = properties1['lon']
     state1 = properties1['state']
