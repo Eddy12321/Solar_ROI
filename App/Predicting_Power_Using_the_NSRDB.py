@@ -104,6 +104,10 @@ def main():
     TimeTillPayed = InstallationCost / dollars_saved1
     st.write('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
 
+    Date = pd.date_range(start = "01/01/22 00:00:00", periods = Locationdf.shape[0], freq = '30T')
+
+    st.write(Date.head())
+
 Address = st.text_input('Please enter your address as it appears on google, except with a space on both sides of the commas. No need to enter the country.', value = "1600 Pennsylvania Avenue , Washington DC , 20500")
 
 tempAddress = Address.rsplit(" ")
