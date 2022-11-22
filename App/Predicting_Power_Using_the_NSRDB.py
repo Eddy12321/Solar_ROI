@@ -38,8 +38,8 @@ def main():
     your_email = 'edwardjs43@gmail.com'
     mailing_list = 'false'
 
-    x_train = pd.read_csv('./data/X_train.csv')
-    y_train = pd.read_csv('./data/Y_train.csv')
+    x_train = pd.read_csv('./data/X_train2.csv')
+    y_train = pd.read_csv('./data/Y_train2.csv')
     Electricity_cost = pd.read_csv('./data/StatesElectricity.csv')
     url1 = "https://api.geoapify.com/v1/geocode/search?text=" + Address + "%20United%20States&apiKey=" + GEOAPI_KEY
 
