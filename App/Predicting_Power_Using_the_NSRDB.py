@@ -120,9 +120,9 @@ for idx, word in enumerate(tempAddress):
 st.write(Address)
 
 st.markdown('Please enter the expected cost of your solar panel installation in dollars.')
-InstallationCost = st.number_input('Form', value = float(0), min_value = 1, label_visibility = 'hidden')
+InstallationCost = st.number_input('Form', value = 2400, min_value = 1, label_visibility = 'hidden')
 
 st.markdown('Please enter the size of your installation in kW .')
-InstallationSize = st.number_input('Form', value = float(0), min_value = 0.05, label_visibility = 'hidden')
+InstallationSize = st.number_input('Form', value = 0.6, min_value = 0.05, label_visibility = 'hidden')
 
 main()
