@@ -124,15 +124,6 @@ def main():
 
     st.pyplot(fig = fig)
 
-    fig, ax = plt.subplots(figsize = (6, 4))
-    ax.plot(Locationdf['Month'].unique(), Locationdf.groupby('Month')['TempOut'].mean())
-    ax.set_title('Average Temperature by Month')
-    ax.set_xlabel('Month')
-    ax.set_xticks([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
-    ax.set_ylabel('Average Temperature')
-
-    st.pyplot(fig = fig)
-
 Address = st.text_input('Please enter your address as it appears on google, except with a space on both sides of the commas. No need to enter the country.', value = "1600 Pennsylvania Avenue , Washington DC , 20500")
 
 tempAddress = Address.rsplit(" ")
