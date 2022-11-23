@@ -116,7 +116,7 @@ def main():
     st.pyplot(fig = fig)
 
     fig, ax = plt.subplots(figsize = (6, 4))
-    ax.plot(x = Locationdf.index, y = Locationdf['Power'], linestyle = '--', c = 'r', marker = '.')
+    ax.plot(Locationdf.index, Locationdf['Power'], linestyle = '--', c = 'r', marker = '.')
     ax.set_title('Power generated at 30 minute intervals through the year')
     ax.set_xlabel('Interval')
     ax.set_ylabel('Power Generated')
@@ -124,7 +124,7 @@ def main():
     st.pyplot(fig = fig)
 
     fig, ax = plt.subplots(figsize = (6, 4))
-    ax.plot(x = Locationdf.groupby('Month')['Month'], y = Locationdf.groupby('Month')['Power'].mean())
+    ax.plot(Locationdf.groupby('Month')['Month'], Locationdf.groupby('Month')['Power'].mean())
     ax.set_title('Histogram of Power Generated')
     ax.set_xlabel('Month')
     ax.set_ylabel('Average Power Generated')
