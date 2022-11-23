@@ -123,9 +123,9 @@ def main():
     ax.set_ylabel('Average Power Generated')
 
     st.pyplot(fig = fig)
-    
+
     fig, ax = plt.subplots(figsize = (6, 4))
-    ax.plot(Locationdf['Month'].unique(), Locationdf.groupby('Month')['Tempout'].mean())
+    ax.plot(Locationdf['Month'].unique(), Locationdf.groupby('Month')['TempOut'].mean())
     ax.set_title('Average Temperature by Month')
     ax.set_xlabel('Month')
     ax.set_xticks([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
