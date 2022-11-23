@@ -107,7 +107,7 @@ def main():
     Locationdf['Date'] = pd.date_range(start = "01/01/22 00:00:00", periods = Locationdf.shape[0], freq = '30T')
     Locationdf['Month'] = Locationdf['Date'].agg(func = lambda x: x.month)
 
-    fig, ax = plt.subplots(figsize = (6, 6))
+    fig, ax = plt.subplots(figsize = (6, 4))
     ax.hist(Locationdf['Power'])
     ax.set_title('Histogram of Power Generated')
     ax.set_xlabel('Power Generated')
