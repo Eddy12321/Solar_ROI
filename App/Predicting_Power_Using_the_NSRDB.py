@@ -119,7 +119,7 @@ def main():
     ax.plot(Locationdf['Month'].unique(), Locationdf.groupby('Month')['Power'].mean())
     ax.set_title('Histogram of Power Generated')
     ax.set_xlabel('Month')
-    ax.set_xticks(12)
+    ax.set_xticks([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
     ax.set_ylabel('Average Power Generated')
 
     st.pyplot(fig = fig)
