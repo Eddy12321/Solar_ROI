@@ -27,10 +27,10 @@ st.markdown("This program will allow you to determine a timeline for paying off 
 
 def main():
     year = 2020
-    attributes = 'air_temperature','alpha','aod','asymmetry','cld_opd_dcomp','cld_reff_dcomp', 
-    'clearsky_dhi','clearsky_dni','clearsky_ghi','cloud_press_acha','cloud_type','dew_point','dhi',
-    'dni','ghi','ozone', 'relative_humidity','solar_zenith_angle','ssa','surface_albedo',
-    'surface_pressure','total_precipitable_water', 'wind_direction','wind_speed'
+    attributes1 = 'air_temperature','alpha','aod','asymmetry','cld_opd_dcomp','cld_reff_dcomp'
+    attributes2 = 'clearsky_dhi','clearsky_dni','clearsky_ghi','cloud_press_acha','cloud_type','dew_point'
+    attributes3 = 'dhi','dni','ghi','ozone', 'relative_humidity','solar_zenith_angle','ssa','surface_albedo'
+    attributes4 = 'surface_pressure','total_precipitable_water', 'wind_direction','wind_speed'
     leap_year = 'false'
     interval = '30'
     utc = 'false'
@@ -55,14 +55,33 @@ def main():
     lon = properties1['lon']
     state1 = properties1['state']
 
-    url = 'https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?wkt=POINT({lon}%20{lat})&names={year}&leap_day={leap}&interval={interval}&utc={utc}&full_name={name}&email={email}&affiliation={affiliation}&mailing_list={mailing_list}&reason={reason}&api_key={api}&attributes={attr}'.format(year=year, lat=lat, lon=lon, leap=leap_year, interval=interval, utc=utc, name=your_name, email=your_email, mailing_list=mailing_list, affiliation=your_affiliation, reason=reason_for_use, api=NSRDBAPI_KEY, attr=attributes)
+    url1 = 'https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?wkt=POINT({lon}%20{lat})&names={year}&leap_day={leap}&interval={interval}&utc={utc}&full_name={name}&email={email}&affiliation={affiliation}&mailing_list={mailing_list}&reason={reason}&api_key={api}&attributes={attr}'.format(year=year, lat=lat, lon=lon, leap=leap_year, interval=interval, utc=utc, name=your_name, email=your_email, mailing_list=mailing_list, affiliation=your_affiliation, reason=reason_for_use, api=NSRDBAPI_KEY, attr=attributes1)
+    url2 = 'https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?wkt=POINT({lon}%20{lat})&names={year}&leap_day={leap}&interval={interval}&utc={utc}&full_name={name}&email={email}&affiliation={affiliation}&mailing_list={mailing_list}&reason={reason}&api_key={api}&attributes={attr}'.format(year=year, lat=lat, lon=lon, leap=leap_year, interval=interval, utc=utc, name=your_name, email=your_email, mailing_list=mailing_list, affiliation=your_affiliation, reason=reason_for_use, api=NSRDBAPI_KEY, attr=attributes2)
+    url3 = 'https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?wkt=POINT({lon}%20{lat})&names={year}&leap_day={leap}&interval={interval}&utc={utc}&full_name={name}&email={email}&affiliation={affiliation}&mailing_list={mailing_list}&reason={reason}&api_key={api}&attributes={attr}'.format(year=year, lat=lat, lon=lon, leap=leap_year, interval=interval, utc=utc, name=your_name, email=your_email, mailing_list=mailing_list, affiliation=your_affiliation, reason=reason_for_use, api=NSRDBAPI_KEY, attr=attributes3)
+    url4 = 'https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?wkt=POINT({lon}%20{lat})&names={year}&leap_day={leap}&interval={interval}&utc={utc}&full_name={name}&email={email}&affiliation={affiliation}&mailing_list={mailing_list}&reason={reason}&api_key={api}&attributes={attr}'.format(year=year, lat=lat, lon=lon, leap=leap_year, interval=interval, utc=utc, name=your_name, email=your_email, mailing_list=mailing_list, affiliation=your_affiliation, reason=reason_for_use, api=NSRDBAPI_KEY, attr=attributes4)
+    
+    Locationdf1 = pd.read_csv(url1)
+    Locationdf2 = pd.read_csv(url2)
+    Locationdf3 = pd.read_csv(url3)
+    Locationdf4 = pd.read_csv(url4)
 
-    Locationdf = pd.read_csv(url)
-
-    Locationdf = Locationdf.iloc[:,:12]
-    Locationdf.columns = Locationdf.loc[1]
-    Locationdf.drop([0,1], inplace = True)
-    Locationdf.drop(columns = ['Year', 'Month', 'Day', 'Hour', 'Minute'], inplace = True)
+    Locationdf1 = Locationdf1.iloc[:,:12]
+    Locationdf1.columns = Locationdf1.loc[1]
+    Locationdf1.drop([0,1], inplace = True)
+    Locationdf1.drop(columns = ['Year', 'Month', 'Day', 'Hour', 'Minute'], inplace = True)
+    Locationdf2 = Locationdf2.iloc[:,:12]
+    Locationdf2.columns = Locationdf2.loc[1]
+    Locationdf2.drop([0,1], inplace = True)
+    Locationdf2.drop(columns = ['Year', 'Month', 'Day', 'Hour', 'Minute'], inplace = True)
+    Locationdf3 = Locationdf3.iloc[:,:12]
+    Locationdf3.columns = Locationdf3.loc[1]
+    Locationdf3.drop([0,1], inplace = True)
+    Locationdf3.drop(columns = ['Year', 'Month', 'Day', 'Hour', 'Minute'], inplace = True)
+    Locationdf4 = Locationdf4.iloc[:,:12]
+    Locationdf4.columns = Locationdf4.loc[1]
+    Locationdf4.drop([0,1], inplace = True)
+    Locationdf4.drop(columns = ['Year', 'Month', 'Day', 'Hour', 'Minute'], inplace = True)
+    Locationdf = Locationdf1.merge(Locationdf2, left_index = True, right_index = True).merge(Locationdf3, left_index = True, right_index = True).merge(Locationdf4, left_index = True, right_index = True)
 
     y_train.drop(columns = ['Unnamed: 0'], inplace = True)
     x_train.drop(columns = ['Unnamed: 0'], inplace = True)
