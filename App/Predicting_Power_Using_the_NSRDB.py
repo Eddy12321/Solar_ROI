@@ -27,7 +27,10 @@ st.markdown("This program will allow you to determine a timeline for paying off 
 
 def main():
     year = 2020
-    attributes = 'air_temperature,relative_humidity,dew_point,wind_speed,surface_pressure,total_precipitable_water,ghi'
+    attributes = 'air_temperature','alpha','aod','asymmetry','cld_opd_dcomp','cld_reff_dcomp', 
+    'clearsky_dhi','clearsky_dni','clearsky_ghi','cloud_press_acha','cloud_type','dew_point','dhi',
+    'dni','ghi','ozone', 'relative_humidity','solar_zenith_angle','ssa','surface_albedo',
+    'surface_pressure','total_precipitable_water', 'wind_direction','wind_speed'
     leap_year = 'false'
     interval = '30'
     utc = 'false'
