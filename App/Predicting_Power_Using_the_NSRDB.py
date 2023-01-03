@@ -198,7 +198,7 @@ def main():
         for empty in range(i+1, nsubplots):
             axes.flatten()[empty].set_visible(False)
 
-        st.line_chart(Locationdf[col])
+        st.line_chart(Locationdf[columns])
         
     scatterplots(['Power', 'air_temperature', 'dhi', 'dew_point', 'relative_humidity', 'surface_pressure'], ncol = 3)
 
