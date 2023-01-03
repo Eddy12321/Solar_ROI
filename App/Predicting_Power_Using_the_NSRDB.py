@@ -187,8 +187,8 @@ def main():
         if ncol is None:
             ncol = len(columns)
         nrow = int(np.ceil(len(columns) / ncol))
-        fig, axes = plt.subplots(nrow, ncol, figsize=figsize, squeeze=False)
-        fig.subplots_adjust(wspace=0.5, hspace=0.6)
+        fig1, axes = plt.subplots(nrow, ncol, figsize=figsize, squeeze=False)
+        fig1.subplots_adjust(wspace=0.5, hspace=0.6)
         for i, col in enumerate(columns):
             ax = axes.flatten()[i]
             ax.plot(Locationdf['Month'].unique(), Locationdf.groupby('Month')[col].mean())
@@ -200,7 +200,7 @@ def main():
 
     scatterplots(['Power', 'air_temperature', 'dhi', 'dew_point', 'relative_humidity', 'surface_pressure'], figsize = (14, 4))
 
-    st.pyplot(fig = fig)
+    st.pyplot(fig = fig1)
 
 Address = st.text_input('Please enter your address as it appears on google, except with a space on both sides of the commas. No need to enter the country.', value = "1600 Pennsylvania Avenue , Washington DC , 20500")
 
