@@ -197,7 +197,7 @@ def main():
             ax.set(xlabel='Month', ylabel='Average '+col+' by month')
             chartdf['X'] = Locationdf['Month'].unique()
             chartdf['Y'] = Locationdf.groupby('Month')[col].mean()
-            st.line_chart(data = chartdf, x = 'X', y = 'Y')
+            st.line_chart(data = chartdf, x = 'X', y = 'Y', x_title = 'Month', y_title = 'Average '+col+' by month')
         nsubplots = nrow * ncol    
         for empty in range(i+1, nsubplots):
             axes.flatten()[empty].set_visible(False)
