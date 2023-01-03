@@ -171,10 +171,10 @@ def main():
 
         dollars_saved1 = Locationdf['Money_saved'].sum() / 100
 
-    st.metric(label = ':heavy_dollar_sign:', value = dollars_saved1)
-    st.metric(label = ':thermometer:'+' temperature', value = Locationdf['air_temperature'].mean())
-    st.metric(label = ':sunny:'+' sunshine', value = Locationdf['dhi'].mean())
-    st.metric(label = ':droplet:'+' humidity', value = Locationdf['relative_humidity'].mean())
+    st.metric(label = ':heavy_dollar_sign:'+' money saved', value = dollars_saved1)
+    st.metric(label = ':thermometer:'+' average temperature', value = Locationdf['air_temperature'].mean())
+    st.metric(label = ':sunny:'+' average irradiance', value = Locationdf['dhi'].mean())
+    st.metric(label = ':droplet:'+' average humidity', value = Locationdf['relative_humidity'].mean())
 
     st.write('The amount that you would save per year at your location is $' + str(dollars_saved1))
     TimeTillPayed = InstallationCost / dollars_saved1
@@ -198,7 +198,7 @@ def main():
         for i, col in enumerate(columns):
             ax = axes.flatten()[i]
             ax.plot(Locationdf['Month'].unique(), Locationdf.groupby('Month')[col].mean())
-            ax.set_xticks(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',])
+            ax.set_xticks(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
             ax.set(xlabel='Month', ylabel='Average '+col+' by month')
         nsubplots = nrow * ncol    
         for empty in range(i+1, nsubplots):
