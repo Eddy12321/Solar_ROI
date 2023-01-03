@@ -198,7 +198,7 @@ def main():
         for i, col in enumerate(columns):
             ax = axes.flatten()[i]
             ax.plot(Locationdf['Month'].unique(), Locationdf.groupby('Month')[col].mean())
-            ax.set_xticks(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
+            ax.set_xticks([0,1,2,3,4,5,6,7,8,9,10,11,12])
             ax.set(xlabel='Month', ylabel='Average '+col+' by month')
         nsubplots = nrow * ncol    
         for empty in range(i+1, nsubplots):
