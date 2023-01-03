@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # # Predicting Power Using the NSRDB
-import streamlit as st
 import pandas as pd
 import numpy as np
 import os
@@ -17,13 +16,13 @@ import requests
 import json
 from requests.structures import CaseInsensitiveDict
 
-GEOAPI_KEY = st.secrets['GEOAPI_KEY']
+GEOAPI_KEY = "57e88c5179064b9db5ccd0973355973a"
 NSRDBAPI_KEY = "1cJyHKd9AYLbDbCQxt8RJTxIuhIHFI9AIRHbCr76"
 newAddress = "f"
 
-st.title("Predicting Solar Power Using the NSRDB")
-st.markdown("This program will allow you to determine a timeline for paying off your solar installation. We begin by predicting the amount of solar power that can be generated at \
-     the entered location. We then use the expected installation cost and the average electricity cost in your region to let you know when you can expect to start turning a profit!")
+print("Predicting Solar Power Using the NSRDB")
+print("This program will allow you to determine a timeline for paying off your solar installation. We begin by predicting the amount of solar power that can be generated at \
+    the entered location. We then use the expected installation cost and the average electricity cost in your region to let you know when you can expect to start turning a profit!")
 
 def main():
     year = 2020
@@ -147,6 +146,7 @@ def main():
     'Wind Speed':'wind_speed'}
 
     Locationdf.rename(columns = columnNames, inplace = True)
+
     y_train.drop(columns = ['Unnamed: 0'], inplace = True)
     x_train.drop(columns = ['Unnamed: 0'], inplace = True)
 
@@ -162,7 +162,8 @@ def main():
 
     model.fit(x_train, y_train)
 
-    Locationdf['Power'] = model.predict(Locationdf) * (InstallationSize / 0.6)
+    Locationdf['Power'] = model.predict(Locationdf) 
+    Locationdf['Power'] = Locationdf['Power'] * (InstallationSize / 10000)
 
     StateElectricityCost1 = Electricity_cost.loc[state1]['Electricity Prices']
 
@@ -170,9 +171,9 @@ def main():
 
     dollars_saved1 = Locationdf['Money_saved'].sum() / 100
 
-    st.write('The amount that you would save per year at your location is $' + str(dollars_saved1))
+    print('The amount that you would save per year at your location is $' + str(dollars_saved1))
     TimeTillPayed = InstallationCost / dollars_saved1
-    st.write('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
+    print('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
 
     Locationdf['Date'] = pd.date_range(start = "01/01/22 00:00:00", periods = Locationdf.shape[0], freq = '30T')
     Locationdf['Month'] = Locationdf['Date'].agg(func = lambda x: x.month)
@@ -181,7 +182,7 @@ def main():
     ax.hist(Locationdf['Power'])
     ax.set(xlabel='Power Generated', ylabel='Count', title = 'Histogram of Power Generated')
 
-    st.pyplot(fig = fig)
+    plt.show()
 
     def scatterplots(columns, ncol=None, figsize=(15, 8)):
         if ncol is None:
@@ -200,9 +201,9 @@ def main():
 
     scatterplots(['Power', 'air_temperature', 'dhi', 'dew_point', 'relative_humidity', 'surface_pressure'], figsize = (14, 4))
 
-    st.pyplot(fig = fig)
+    plt.show()
 
-Address = st.text_input('Please enter your address as it appears on google, except with a space on both sides of the commas. No need to enter the country.', value = "1600 Pennsylvania Avenue , Washington DC , 20500")
+Address =  "1600 Pennsylvania Avenue , Washington DC , 20500"
 
 tempAddress = Address.rsplit(" ")
 Address = ""
@@ -213,8 +214,8 @@ for idx, word in enumerate(tempAddress, start = 1):
     else:
         Address += '%20' + word
 
-InstallationCost = st.number_input('Please enter the expected cost of your solar panel installation in dollars.', value = 2400, min_value = 1)
+InstallationCost = 2400
 
-InstallationSize = st.number_input('Please enter the size of your installation in kW.', value = 0.6, min_value = 0.05)
+InstallationSize = 0.6
 
 main()
