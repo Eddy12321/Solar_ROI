@@ -190,11 +190,14 @@ def main():
         fig, axes = plt.subplots(nrow, ncol, figsize=figsize, squeeze=False)
         fig.subplots_adjust(wspace=0.5, hspace=0.6)
         for i, col in enumerate(columns):
+            chartdf = pd.DataFrame()
             ax = axes.flatten()[i]
             ax.plot(Locationdf['Month'].unique(), Locationdf.groupby('Month')[col].mean())
             ax.set_xticks([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
             ax.set(xlabel='Month', ylabel='Average '+col+' by month')
-            st.line_chart(x = Locationdf['Month'].unique(), y = Locationdf.groupby('Month')[col].mean())
+            chartdf['X'] = Locationdf['Month'].unique()
+            chartdf['Y'] = Locationdf.groupby('Month')[col].mean()
+            st.line_chart(data = chartdf, x = 'X', y = 'Y')
         nsubplots = nrow * ncol    
         for empty in range(i+1, nsubplots):
             axes.flatten()[empty].set_visible(False)
