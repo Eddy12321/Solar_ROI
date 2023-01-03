@@ -92,83 +92,89 @@ def main():
     url16 = 'https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?wkt=POINT({lon}%20{lat})&names={year}&leap_day={leap}&interval={interval}&utc={utc}&full_name={name}&email={email}&affiliation={affiliation}&mailing_list={mailing_list}&reason={reason}&api_key={api}&attributes={attr}'.format(year=year, lat=lat, lon=lon, leap=leap_year, interval=interval, utc=utc, name=your_name, email=your_email, mailing_list=mailing_list, affiliation=your_affiliation, reason=reason_for_use, api=NSRDBAPI_KEY, attr=attributes23)   
     url17 = 'https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?wkt=POINT({lon}%20{lat})&names={year}&leap_day={leap}&interval={interval}&utc={utc}&full_name={name}&email={email}&affiliation={affiliation}&mailing_list={mailing_list}&reason={reason}&api_key={api}&attributes={attr}'.format(year=year, lat=lat, lon=lon, leap=leap_year, interval=interval, utc=utc, name=your_name, email=your_email, mailing_list=mailing_list, affiliation=your_affiliation, reason=reason_for_use, api=NSRDBAPI_KEY, attr=attributes24)   
     
-    Locationdf1 = pd.read_csv(url2)
-    Locationdf2 = pd.read_csv(url3)
-    Locationdf3 = pd.read_csv(url4)
-    Locationdf4 = pd.read_csv(url5)
-    Locationdf5 = pd.read_csv(url6)
-    Locationdf6 = pd.read_csv(url7)
-    Locationdf7 = pd.read_csv(url8)
-    Locationdf8 = pd.read_csv(url9)
-    Locationdf9 = pd.read_csv(url10)
-    Locationdf10 = pd.read_csv(url11)
-    Locationdf11 = pd.read_csv(url12)
-    Locationdf12 = pd.read_csv(url13)
-    Locationdf13 = pd.read_csv(url14)
-    Locationdf14 = pd.read_csv(url15)
-    Locationdf15 = pd.read_csv(url16)
-    Locationdf16 = pd.read_csv(url17)
+    with st.spinner("Gathering weather data"):
+        Locationdf1 = pd.read_csv(url2)
+        Locationdf2 = pd.read_csv(url3)
+        Locationdf3 = pd.read_csv(url4)
+        Locationdf4 = pd.read_csv(url5)
+        Locationdf5 = pd.read_csv(url6)
+        Locationdf6 = pd.read_csv(url7)
+        Locationdf7 = pd.read_csv(url8)
+        Locationdf8 = pd.read_csv(url9)
+        Locationdf9 = pd.read_csv(url10)
+        Locationdf10 = pd.read_csv(url11)
+        Locationdf11 = pd.read_csv(url12)
+        Locationdf12 = pd.read_csv(url13)
+        Locationdf13 = pd.read_csv(url14)
+        Locationdf14 = pd.read_csv(url15)
+        Locationdf15 = pd.read_csv(url16)
+        Locationdf16 = pd.read_csv(url17)
 
-    def Cleandf(df):
-        df = df.iloc[:,:6]
-        df.rename(columns = df.loc[1], inplace = True)
-        df.drop([0,1], inplace = True)
-        df.reset_index(drop = True, inplace = True)
-        df.drop(columns = ['Year', 'Month', 'Day', 'Hour', 'Minute'], inplace = True)
-        return df
+        def Cleandf(df):
+            df = df.iloc[:,:6]
+            df.rename(columns = df.loc[1], inplace = True)
+            df.drop([0,1], inplace = True)
+            df.reset_index(drop = True, inplace = True)
+            df.drop(columns = ['Year', 'Month', 'Day', 'Hour', 'Minute'], inplace = True)
+            return df
 
-    Locationdf1 = Cleandf(Locationdf1)
-    Locationdf2 = Cleandf(Locationdf2)
-    Locationdf3 = Cleandf(Locationdf3)
-    Locationdf4 = Cleandf(Locationdf4)
-    Locationdf5 = Cleandf(Locationdf5)
-    Locationdf6 = Cleandf(Locationdf6)
-    Locationdf7 = Cleandf(Locationdf7)
-    Locationdf8 = Cleandf(Locationdf8)
-    Locationdf9 = Cleandf(Locationdf9)
-    Locationdf10 = Cleandf(Locationdf10)
-    Locationdf11 = Cleandf(Locationdf11)
-    Locationdf12 = Cleandf(Locationdf12)
-    Locationdf13 = Cleandf(Locationdf13)
-    Locationdf14 = Cleandf(Locationdf14)
-    Locationdf15 = Cleandf(Locationdf15)
-    Locationdf16 = Cleandf(Locationdf16)
-    
-    Locationdf = Locationdf1.merge(Locationdf2, left_index = True, right_index = True).merge(Locationdf3, left_index = True, right_index = True).merge(Locationdf4, left_index = True, right_index = True) \
-        .merge(Locationdf5, left_index = True, right_index = True).merge(Locationdf6, left_index = True, right_index = True).merge(Locationdf7, left_index = True, right_index = True) \
-        .merge(Locationdf8, left_index = True, right_index = True).merge(Locationdf9, left_index = True, right_index = True).merge(Locationdf10, left_index = True, right_index = True) \
-        .merge(Locationdf11, left_index = True, right_index = True).merge(Locationdf12, left_index = True, right_index = True).merge(Locationdf13, left_index = True, right_index = True) \
-        .merge(Locationdf14, left_index = True, right_index = True).merge(Locationdf15, left_index = True, right_index = True).merge(Locationdf16, left_index = True, right_index = True)
+        Locationdf1 = Cleandf(Locationdf1)
+        Locationdf2 = Cleandf(Locationdf2)
+        Locationdf3 = Cleandf(Locationdf3)
+        Locationdf4 = Cleandf(Locationdf4)
+        Locationdf5 = Cleandf(Locationdf5)
+        Locationdf6 = Cleandf(Locationdf6)
+        Locationdf7 = Cleandf(Locationdf7)
+        Locationdf8 = Cleandf(Locationdf8)
+        Locationdf9 = Cleandf(Locationdf9)
+        Locationdf10 = Cleandf(Locationdf10)
+        Locationdf11 = Cleandf(Locationdf11)
+        Locationdf12 = Cleandf(Locationdf12)
+        Locationdf13 = Cleandf(Locationdf13)
+        Locationdf14 = Cleandf(Locationdf14)
+        Locationdf15 = Cleandf(Locationdf15)
+        Locationdf16 = Cleandf(Locationdf16)
+        
+        Locationdf = Locationdf1.merge(Locationdf2, left_index = True, right_index = True).merge(Locationdf3, left_index = True, right_index = True).merge(Locationdf4, left_index = True, right_index = True) \
+            .merge(Locationdf5, left_index = True, right_index = True).merge(Locationdf6, left_index = True, right_index = True).merge(Locationdf7, left_index = True, right_index = True) \
+            .merge(Locationdf8, left_index = True, right_index = True).merge(Locationdf9, left_index = True, right_index = True).merge(Locationdf10, left_index = True, right_index = True) \
+            .merge(Locationdf11, left_index = True, right_index = True).merge(Locationdf12, left_index = True, right_index = True).merge(Locationdf13, left_index = True, right_index = True) \
+            .merge(Locationdf14, left_index = True, right_index = True).merge(Locationdf15, left_index = True, right_index = True).merge(Locationdf16, left_index = True, right_index = True)
 
-    columnNames = {'Temperature':'air_temperature','Clearsky DHI':'clearsky_dhi','Clearsky DNI':'clearsky_dni',
-    'Clearsky GHI':'clearsky_ghi','Cloud Press Acha':'cloud_press_acha','Cloud Type':'cloud_type','Dew Point':'dew_point',
-    'DHI':'dhi','DNI':'dni','GHI':'ghi','Relative Humidity':'relative_humidity','Solar Zenith Angle':'solar_zenith_angle','SSA':'ssa',
-    'Surface Albedo':'surface_albedo','Pressure':'surface_pressure','Precipitable Water':'total_precipitable_water','Wind Direction':'wind_direction',
-    'Wind Speed':'wind_speed'}
+        columnNames = {'Temperature':'air_temperature','Clearsky DHI':'clearsky_dhi','Clearsky DNI':'clearsky_dni',
+        'Clearsky GHI':'clearsky_ghi','Cloud Press Acha':'cloud_press_acha','Cloud Type':'cloud_type','Dew Point':'dew_point',
+        'DHI':'dhi','DNI':'dni','GHI':'ghi','Relative Humidity':'relative_humidity','Solar Zenith Angle':'solar_zenith_angle','SSA':'ssa',
+        'Surface Albedo':'surface_albedo','Pressure':'surface_pressure','Precipitable Water':'total_precipitable_water','Wind Direction':'wind_direction',
+        'Wind Speed':'wind_speed'}
 
-    Locationdf.rename(columns = columnNames, inplace = True)
-    y_train.drop(columns = ['Unnamed: 0'], inplace = True)
-    x_train.drop(columns = ['Unnamed: 0'], inplace = True)
+        Locationdf.rename(columns = columnNames, inplace = True)
+        y_train.drop(columns = ['Unnamed: 0'], inplace = True)
+        x_train.drop(columns = ['Unnamed: 0'], inplace = True)
 
-    model = make_pipeline(StandardScaler(), PCA(n_components = 16), RandomForestRegressor(n_estimators = 50, max_depth = 16))
+        model = make_pipeline(StandardScaler(), PCA(n_components = 16), RandomForestRegressor(n_estimators = 50, max_depth = 16))
 
-    Electricity_cost.set_index('State', inplace = True)
-    Electricity_cost.drop(columns = 'Unnamed: 0', inplace = True)
+        Electricity_cost.set_index('State', inplace = True)
+        Electricity_cost.drop(columns = 'Unnamed: 0', inplace = True)
 
-    for col in Locationdf.columns:
-        Locationdf[col] = Locationdf[col].astype(float)
+        for col in Locationdf.columns:
+            Locationdf[col] = Locationdf[col].astype(float)
 
-    Locationdf.dropna(inplace = True)
+        Locationdf.dropna(inplace = True)
 
-    model.fit(x_train, y_train)
+        model.fit(x_train, y_train)
 
-    Locationdf['Power'] = model.predict(Locationdf) * (InstallationSize / 10000)
+        Locationdf['Power'] = model.predict(Locationdf) * (InstallationSize / 10000)
 
-    StateElectricityCost1 = Electricity_cost.loc[state1]['Electricity Prices']
+        StateElectricityCost1 = Electricity_cost.loc[state1]['Electricity Prices']
 
-    Locationdf['Money_saved'] = Locationdf['Power'] * (StateElectricityCost1 / 2)
+        Locationdf['Money_saved'] = Locationdf['Power'] * (StateElectricityCost1 / 2)
 
-    dollars_saved1 = Locationdf['Money_saved'].sum() / 100
+        dollars_saved1 = Locationdf['Money_saved'].sum() / 100
+
+    st.metric(label = ':heavy_dollar_sign:', value = dollars_saved1)
+    st.metric(label = ':thermometer:'+' temperature', value = Locationdf['air_temperature'].mean())
+    st.metric(label = ':sunny:'+' sunshine', value = Locationdf['dhi'].mean())
+    st.metric(label = ':droplet:'+' humidity', value = Locationdf['relative_humidity'].mean())
 
     st.write('The amount that you would save per year at your location is $' + str(dollars_saved1))
     TimeTillPayed = InstallationCost / dollars_saved1
@@ -190,19 +196,15 @@ def main():
         fig, axes = plt.subplots(nrow, ncol, figsize=figsize, squeeze=False)
         fig.subplots_adjust(wspace=0.5, hspace=0.6)
         for i, col in enumerate(columns):
-            chartdf = pd.DataFrame()
             ax = axes.flatten()[i]
             ax.plot(Locationdf['Month'].unique(), Locationdf.groupby('Month')[col].mean())
-            ax.set_xticks([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+            ax.set_xticks(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',])
             ax.set(xlabel='Month', ylabel='Average '+col+' by month')
-            chartdf['X'] = Locationdf['Month'].unique()
-            chartdf['Y'] = Locationdf.groupby('Month')[col].mean()
-            st.line_chart(data = chartdf, x = 'X', y = 'Y', set_x_title = 'Month', set_y_title = 'Average '+col+' by month')
         nsubplots = nrow * ncol    
         for empty in range(i+1, nsubplots):
             axes.flatten()[empty].set_visible(False)
 
-        st.line_chart(Locationdf[columns])
+        st.line_chart(fig = fig)
         
     scatterplots(['Power', 'air_temperature', 'dhi', 'dew_point', 'relative_humidity', 'surface_pressure'], ncol = 3)
 
