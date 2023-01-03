@@ -162,7 +162,7 @@ def main():
 
     model.fit(x_train, y_train)
 
-    Locationdf['Power'] = model.predict(Locationdf) * (InstallationSize / 0.6)
+    Locationdf['Power'] = model.predict(Locationdf) * (InstallationSize / 10000)
 
     StateElectricityCost1 = Electricity_cost.loc[state1]['Electricity Prices']
 
