@@ -60,9 +60,9 @@ def main():
     your_email = 'edwardjs43@gmail.com'
     mailing_list = 'false'
 
-    x_train = pd.read_csv('../data/X_train_New.csv')
-    y_train = pd.read_csv('../data/Y_train_New.csv')
-    Electricity_cost = pd.read_csv('../data/StatesElectricity.csv')
+    x_train = pd.read_csv('./data/X_train_New.csv')
+    y_train = pd.read_csv('./data/Y_train_New.csv')
+    Electricity_cost = pd.read_csv('./data/StatesElectricity.csv')
     url1 = "https://api.geoapify.com/v1/geocode/search?text=" + Address + "%20United%20States&apiKey=" + GEOAPI_KEY
 
     # Powered by Geoapify https://www.geoapify.com
