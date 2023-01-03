@@ -208,19 +208,20 @@ def main():
         
     scatterplots(['Power', 'air_temperature', 'dhi', 'dew_point', 'relative_humidity', 'surface_pressure'], ncol = 3)
 
-Address = st.text_input('Please enter your address as it appears on google, except with a space on both sides of the commas. No need to enter the country.', value = "1600 Pennsylvania Avenue , Washington DC , 20500")
+with st.sidebar:
+    Address = st.text_input('Please enter your address as it appears on google, except with a space on both sides of the commas. No need to enter the country.', value = "1600 Pennsylvania Avenue , Washington DC , 20500")
 
-tempAddress = Address.rsplit(" ")
-Address = ""
-Address += tempAddress[0]
-for idx, word in enumerate(tempAddress, start = 1):
-    if word == ',':
-        Address +=  '%2C'
-    else:
-        Address += '%20' + word
+    tempAddress = Address.rsplit(" ")
+    Address = ""
+    Address += tempAddress[0]
+    for idx, word in enumerate(tempAddress, start = 1):
+        if word == ',':
+            Address +=  '%2C'
+        else:
+            Address += '%20' + word
 
-InstallationCost = st.number_input('Please enter the expected cost of your solar panel installation in dollars.', value = 2400, min_value = 1)
+    InstallationCost = st.number_input('Please enter the expected cost of your solar panel installation in dollars.', value = 2400, min_value = 1)
 
-InstallationSize = st.number_input('Please enter the size of your installation in kW.', value = 0.6, min_value = 0.05)
+    InstallationSize = st.number_input('Please enter the size of your installation in kW.', value = 0.6, min_value = 0.05)
 
 main()
