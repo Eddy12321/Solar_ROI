@@ -220,8 +220,8 @@ with st.sidebar:
         else:
             Address += '%20' + word
 
-    InstallationCost = st.number_input('Please enter the expected cost of your solar panel installation in dollars.', value = 2400, min_value = 1)
+    InstallationCost = st.number_input('Please enter the expected cost of your solar panel installation in dollars.', value = 15720, min_value = 1)
 
-    InstallationSize = st.number_input('Please enter the size of your installation in kW.', value = 0.6, min_value = 0.05)
+    InstallationSize = st.number_input('Please enter the size of your installation in kW.', value = 6.0, min_value = 0.05)
 
 main()
