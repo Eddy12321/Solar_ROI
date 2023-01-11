@@ -169,7 +169,7 @@ def main():
 
         Locationdf['Money_saved'] = Locationdf['Power'] * (StateElectricityCost1 / 2)
 
-        dollars_saved1 = Locationdf['Money_saved'].sum() / 100
+        dollars_saved1 = round(Locationdf['Money_saved'].sum() / 100, 2)
 
     st.metric(label = ':heavy_dollar_sign:'+' money saved', value = dollars_saved1)
     st.metric(label = ':thermometer:'+' average temperature', value = Locationdf['air_temperature'].mean())
@@ -177,7 +177,7 @@ def main():
     st.metric(label = ':droplet:'+' average humidity', value = Locationdf['relative_humidity'].mean())
 
     st.write('The amount that you would save per year at your location is $' + str(dollars_saved1))
-    TimeTillPayed = InstallationCost / dollars_saved1
+    TimeTillPayed = round(InstallationCost / dollars_saved1, 1)
     st.write('By the estimation, you would be aple to pay off your solar installation in ' + str(TimeTillPayed) + ' years!')
 
     Locationdf['Date'] = pd.date_range(start = "01/01/22 00:00:00", periods = Locationdf.shape[0], freq = '30T')
